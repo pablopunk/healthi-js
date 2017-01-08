@@ -7,7 +7,7 @@
 ## Example
 
 ```javascript
-var health = require('healthi.js')
+var health = require('healthi')
 
 health(function(h){
   console.log(h) // prints the current health
