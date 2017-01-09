@@ -28,5 +28,9 @@
   },
   "dependencies": {
     "shelljs": "^0.7.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pablopunk/healthi.js"
   }
 }
