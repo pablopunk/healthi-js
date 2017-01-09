@@ -9,8 +9,10 @@
 ```javascript
 var health = require('healthi')
 
-health(function(h){
-  console.log(h) // prints the current health
+health(function(battery){
+  console.log(battery.currentCapacity) // current mAh
+  console.log(battery.originalCapacity) // original mAh
+  console.log(battery.health) // health %
 })
 ```
 
