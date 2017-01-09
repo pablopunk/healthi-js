@@ -8,7 +8,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function get(callback) {
   _shelljs2.default.exec('ioreg -l | grep Capacity | cut -d\' \' -f19', { silent: true }, function (code, stdout, stderr) {
-
     if (code) {
       console.log('exec error: ' + stderr);
       return null;
