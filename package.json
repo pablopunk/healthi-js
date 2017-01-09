@@ -1,6 +1,6 @@
 {
   "name": "healthi",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Simple module to get your Macbook's battery health",
   "main": "dist/index.js",
   "scripts": {
@@ -25,5 +25,8 @@
     "rules": {
       "new-cap": 0
     }
+  },
+  "dependencies": {
+    "shelljs": "^0.7.6"
   }
 }
