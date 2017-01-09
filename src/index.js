@@ -2,7 +2,6 @@ import shell from 'shelljs'
 
 function get(callback) {
   shell.exec('ioreg -l | grep Capacity | cut -d\' \' -f19', {silent: true}, (code, stdout, stderr) => {
-
     if (code) {
       console.log('exec error: ' + stderr)
       return null
