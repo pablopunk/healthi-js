@@ -1,4 +1,5 @@
 import test from 'ava'
+import shell from 'shelljs'
 import health from '../dist/index'
 
 test('check battery health range', async t => {
@@ -7,3 +8,8 @@ test('check battery health range', async t => {
   })
 })
 
+const command = 'ioreg'
+
+test('check command to exist', async t => {
+  t.true(Boolean(shell.which(command)))
+})

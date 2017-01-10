@@ -1,16 +1,22 @@
 import shell from 'shelljs'
 
-const command = 'ioreg -l | grep Capacity | cut -d\' \' -f19'
+const command = 'ioreg'
+const options = ' -l | grep Capacity | cut -d\' \' -f19'
 
 function get(callback) {
-  shell.exec(command, {silent: true}, (code, stdout, stderr) => {
+  if (!commandExists(command)) {
+    console.log(command + ' command does not exist')
+    return {
+      currentCapacity: 0,
+      originalCapacity: 0,
+      health: 0
+    }
+  }
+
+  shell.exec(command + options, {silent: true}, (code, stdout, stderr) => {
     if (code) {
       console.log('exec error: ' + stderr)
-      return {
-        currentCapacity: 0,
-        originalCapacity: 0,
-        health: 0
-      }
+      return null
     }
 
     const lines = stdout.match(/[^\n]+/g)
@@ -25,4 +31,9 @@ function get(callback) {
   })
 }
 
+function commandExists(command) {
+  return shell.which(command)
+}
+
 module.exports = get
+

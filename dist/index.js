@@ -6,8 +6,20 @@ var _shelljs2 = _interopRequireDefault(_shelljs);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var command = 'ioreg';
+var options = ' -l | grep Capacity | cut -d\' \' -f19';
+
 function get(callback) {
-  _shelljs2.default.exec('ioreg -l | grep Capacity | cut -d\' \' -f19', { silent: true }, function (code, stdout, stderr) {
+  if (!commandExists(command)) {
+    console.log(command + ' command does not exist');
+    return {
+      currentCapacity: 0,
+      originalCapacity: 0,
+      health: 0
+    };
+  }
+
+  _shelljs2.default.exec(command + options, { silent: true }, function (code, stdout, stderr) {
     if (code) {
       console.log('exec error: ' + stderr);
       return null;
@@ -23,6 +35,10 @@ function get(callback) {
       health: capacityNow * 100 / capacityOriginal
     });
   });
+}
+
+function commandExists(command) {
+  return _shelljs2.default.which(command);
 }
 
 module.exports = get;
