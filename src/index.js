@@ -1,10 +1,16 @@
 import shell from 'shelljs'
 
+const command = 'ioreg -l | grep Capacity | cut -d\' \' -f19'
+
 function get(callback) {
-  shell.exec('ioreg -l | grep Capacity | cut -d\' \' -f19', {silent: true}, (code, stdout, stderr) => {
+  shell.exec(command, {silent: true}, (code, stdout, stderr) => {
     if (code) {
       console.log('exec error: ' + stderr)
-      return null
+      return {
+        currentCapacity: 0,
+        originalCapacity: 0,
+        health: 0
+      }
     }
 
     const lines = stdout.match(/[^\n]+/g)
