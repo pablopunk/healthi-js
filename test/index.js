@@ -1,6 +1,6 @@
 import test from 'ava'
 import shell from 'shelljs'
-import health from '../dist/index'
+import health from '../bin/healthi'
 
 test('check battery health range', async t => {
   health(battery => {

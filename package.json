@@ -2,9 +2,9 @@
   "name": "healthi",
   "version": "1.0.6",
   "description": "Simple module to get your Macbook's battery health",
-  "main": "dist/index.js",
+  "main": "bin/healthi.js",
   "scripts": {
-    "build": "babel src --presets babel-preset-es2015 --out-dir dist",
+    "build": "babel src --presets babel-preset-es2015 --out-dir bin",
     "prepublish": "npm run build",
     "test": "xo && ava"
   },
@@ -23,6 +23,9 @@
     "esnext": true,
     "semicolon": false,
     "space": true,
+    "ignores": [
+      "bin/**"
+    ],
     "rules": {
       "new-cap": 0
     }
