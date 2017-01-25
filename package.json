@@ -6,6 +6,7 @@
   "scripts": {
     "build": "babel src --presets babel-preset-es2015 --out-dir bin",
     "prepublish": "npm run build",
+    "prepush": "npm test",
     "test": "xo && ava"
   },
   "keywords": [
@@ -17,6 +18,7 @@
     "ava": "^0.17.0",
     "babel-cli": "^6.18.0",
     "babel-preset-es2015": "^6.18.0",
+    "husky": "^0.13.1",
     "xo": "^0.17.1"
   },
   "xo": {
