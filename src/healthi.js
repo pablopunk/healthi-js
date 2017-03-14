@@ -3,7 +3,11 @@ import shell from 'shelljs'
 const command = 'ioreg'
 const options = ' -l | grep Capacity | cut -d\' \' -f19'
 
-function get(callback) {
+const commandExists = command => {
+  return shell.which(command)
+}
+
+const get = callback => {
   if (!commandExists(command)) {
     console.log(command + ' command does not exist')
     return {
@@ -31,9 +35,4 @@ function get(callback) {
   })
 }
 
-function commandExists(command) {
-  return shell.which(command)
-}
-
 module.exports = get
-

@@ -9,7 +9,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var command = 'ioreg';
 var options = ' -l | grep Capacity | cut -d\' \' -f19';
 
-function get(callback) {
+var commandExists = function commandExists(command) {
+  return _shelljs2.default.which(command);
+};
+
+var get = function get(callback) {
   if (!commandExists(command)) {
     console.log(command + ' command does not exist');
     return {
@@ -35,10 +39,6 @@ function get(callback) {
       health: capacityNow * 100 / capacityOriginal
     });
   });
-}
-
-function commandExists(command) {
-  return _shelljs2.default.which(command);
-}
+};
 
 module.exports = get;

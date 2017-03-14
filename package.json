@@ -5,9 +5,9 @@
   "main": "bin/healthi.js",
   "scripts": {
     "build": "babel src --presets babel-preset-es2015 --out-dir bin",
-    "prepublish": "npm run build",
-    "prepush": "npm test",
-    "test": "npm run build && xo && ava"
+    "prepublish": "yarn run build",
+    "prepush": "yarn run test",
+    "test": "yarn run build && xo && ava"
   },
   "keywords": [
     "health"
