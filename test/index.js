@@ -3,7 +3,7 @@ import shell from 'shelljs'
 import health from '../bin/healthi'
 
 test('check battery health range', async t => {
-  health(battery => {
+  await health(battery => {
     t.true(battery.health >= 0 && battery.health <= 100)
   })
 })
@@ -11,5 +11,5 @@ test('check battery health range', async t => {
 const command = 'ioreg'
 
 test('check command to exist', async t => {
-  t.true(Boolean(shell.which(command)))
+  await t.true(Boolean(shell.which(command)))
 })
