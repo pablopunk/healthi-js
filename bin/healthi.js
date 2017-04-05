@@ -31,6 +31,15 @@ var get = function get(callback) {
     }
 
     var lines = stdout.match(/[^\n]+/g);
+    if (lines === null) {
+      console.log('error: ' + stdout);
+      callback({
+        currentCapacity: 0,
+        originalCapacity: 0,
+        health: 0
+      });
+      return;
+    }
     var capacityNow = parseInt(lines[0], 10);
     var capacityOriginal = parseInt(lines[3], 10);
 

@@ -25,6 +25,15 @@ const get = callback => {
     }
 
     const lines = stdout.match(/[^\n]+/g)
+    if (lines === null) {
+      console.log('error: ' + stdout)
+      callback({
+        currentCapacity: 0,
+        originalCapacity: 0,
+        health: 0
+      })
+      return
+    }
     const capacityNow = parseInt(lines[0], 10)
     const capacityOriginal = parseInt(lines[3], 10)
 
