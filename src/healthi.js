@@ -10,11 +10,12 @@ const commandExists = command => {
 const get = callback => {
   if (!commandExists(command)) {
     console.log(command + ' command does not exist')
-    return {
+    callback({
       currentCapacity: 0,
       originalCapacity: 0,
       health: 0
-    }
+    })
+    return
   }
 
   shell.exec(command + options, {silent: true}, (code, stdout, stderr) => {
