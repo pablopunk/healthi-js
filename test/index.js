@@ -2,9 +2,11 @@ import test from 'ava'
 import shell from 'shelljs'
 import health from '../bin/healthi'
 
-test('check battery health range', async t => {
-  await health(battery => {
+test.cb('check battery health range', t => {
+  t.plan(1)
+  health(battery => {
     t.true(battery.health >= 0 && battery.health <= 100)
+    t.end()
   })
 })
 
