@@ -7,7 +7,7 @@
     "build": "babel src --presets babel-preset-es2015 --out-dir bin",
     "prepublish": "yarn run build",
     "prepush": "yarn run test",
-    "test": "yarn run build && xo && ava"
+    "test": "yarn run build && standard src/*.js test/*.js && ava"
   },
   "keywords": [
     "health"
@@ -18,22 +18,11 @@
     "ava": "^0.19.0",
     "babel-cli": "^6.18.0",
     "babel-preset-es2015": "^6.18.0",
-    "husky": "^0.13.3",
-    "xo": "^0.19.0"
-  },
-  "xo": {
-    "esnext": true,
-    "semicolon": false,
-    "space": true,
-    "ignores": [
-      "bin/**"
-    ],
-    "rules": {
-      "new-cap": 0
-    }
+    "husky": "^0.13.3"
   },
   "dependencies": {
-    "shelljs": "^0.7.6"
+    "shelljs": "^0.7.6",
+    "standard": "^10.0.1"
   },
   "repository": {
     "type": "git",

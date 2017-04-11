@@ -14,13 +14,14 @@ var commandExists = function commandExists(command) {
 };
 
 var get = function get(callback) {
+  var battery = {
+    currentCapacity: 0,
+    originalCapacity: 0,
+    health: 0
+  };
   if (!commandExists(command)) {
     console.log(command + ' command does not exist');
-    callback({
-      currentCapacity: 0,
-      originalCapacity: 0,
-      health: 0
-    });
+    callback(battery);
     return;
   }
 
@@ -33,21 +34,17 @@ var get = function get(callback) {
     var lines = stdout.match(/[^\n]+/g);
     if (lines === null) {
       console.log('error: ' + stdout);
-      callback({
-        currentCapacity: 0,
-        originalCapacity: 0,
-        health: 0
-      });
+      callback(battery);
       return;
     }
     var capacityNow = parseInt(lines[0], 10);
     var capacityOriginal = parseInt(lines[3], 10);
-
-    callback({
+    battery = {
       currentCapacity: capacityNow,
       originalCapacity: capacityOriginal,
       health: capacityNow * 100 / capacityOriginal
-    });
+    };
+    callback(battery);
   });
 };
 
