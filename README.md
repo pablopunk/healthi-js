@@ -25,6 +25,8 @@ console.log(battery.health)
 const health = require('healthi')
 health().then(battery => {
   console.log(battery.health)
+}).catch(err => {
+  console.log(`Error: ${err.message}`)
 })
 ```
 
