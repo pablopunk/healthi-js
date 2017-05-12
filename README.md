@@ -7,15 +7,24 @@
   <p align="center">Simple module to get your Macbook's battery health</p>
 </p>
 
-## Example
+## Usage
+
+Healhi works with promises since [version 2.0.0](https://github.com/pablopunk/healthi-js/releases/tag/2.0.0):
+
+##### Example 1: await
 
 ```javascript
-var health = require('healthi')
+const health = require('healthi')
+const battery = await health()
+console.log(battery.health)
+```
 
-health(function(battery){
-  console.log(battery.currentCapacity) // current mAh
-  console.log(battery.originalCapacity) // original mAh
-  console.log(battery.health) // health %
+#### Example 2: then
+
+```javascript
+const health = require('healthi')
+health().then(battery => {
+  console.log(battery.health)
 })
 ```
 
@@ -23,7 +32,6 @@ health(function(battery){
 
 Feel free to open an issue or a pull request
 
-```shell
-npm run build # transpile code from src/ to bin/
-npm run test  # run tests
-```
+### Author
+
+© 2017 [Pablo Varela](https://twitter.com/pablopunk)
