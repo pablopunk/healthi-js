@@ -8,11 +8,6 @@ const commandExists = command => {
 }
 
 const get = async () => {
-  let battery = {
-    currentCapacity: 0,
-    originalCapacity: 0,
-    health: 0
-  }
   if (!commandExists(command)) {
     throw new Error(`${command} command does not exist`)
   }
@@ -30,12 +25,11 @@ const get = async () => {
 
   const capacityNow = parseInt(lines[0], 10)
   const capacityOriginal = parseInt(lines[3], 10)
-  battery = {
+  return {
     currentCapacity: capacityNow,
     originalCapacity: capacityOriginal,
     health: (capacityNow * 100) / capacityOriginal
   }
-  return battery
 }
 
 module.exports = get
