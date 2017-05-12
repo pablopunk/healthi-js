@@ -1,6 +1,6 @@
 {
   "name": "healthi",
-  "version": "1.0.8",
+  "version": "2.0.0",
   "description": "Simple module to get your Macbook's battery health",
   "main": "bin/healthi.js",
   "scripts": {

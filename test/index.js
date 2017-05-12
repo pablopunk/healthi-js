@@ -2,12 +2,9 @@ import test from 'ava'
 import shell from 'shelljs'
 import health from '../bin/healthi'
 
-test.cb('check battery health range', t => {
-  t.plan(1)
-  health(battery => {
-    t.true(battery.health >= 0 && battery.health <= 100)
-    t.end()
-  })
+test('check battery health range', async t => {
+  const battery = await health()
+  t.true(battery.health >= 0 && battery.health <= 100)
 })
 
 const command = 'ioreg'
