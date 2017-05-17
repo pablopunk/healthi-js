@@ -9,7 +9,7 @@
 
 ## Usage
 
-Healhi works with promises since [version 2.0.0](https://github.com/pablopunk/healthi-js/releases/tag/2.0.0):
+_Healthi_ works with promises since [version 2.0.0](https://github.com/pablopunk/healthi-js/releases/tag/2.0.0):
 
 #### Example 1: await
 
