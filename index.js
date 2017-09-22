@@ -1,10 +1,11 @@
-const shell = require('shelljs')
+const execa = require('execa')
 
 const command = 'ioreg'
 const options = ' -l | grep Capacity | cut -d\' \' -f19'
 
-const commandExists = command => {
-  return shell.which(command)
+const commandExists = async command => {
+  const { code } = await execa.shell(`which ${command}`)
+  return code === 0
 }
 
 const get = async () => {
@@ -12,7 +13,7 @@ const get = async () => {
     throw new Error(`${command} command does not exist`)
   }
 
-  const {code, stdout, stderr} = shell.exec(command + options, {silent: true})
+  const {code, stdout, stderr} = await execa.shell(command + options)
 
   if (code) {
     throw new Error(stderr)

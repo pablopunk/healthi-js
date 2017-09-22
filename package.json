@@ -7,7 +7,7 @@
     "build": "babel index.js --out-file build.js",
     "prepublish": "yarn run build && yarn run test",
     "prepush": "yarn run build && yarn run test",
-    "test": "standard --fix index.js && ava"
+    "test": "yarn run build && standard --fix index.js && ava"
   },
   "keywords": [
     "health",
@@ -19,11 +19,14 @@
   "license": "MIT",
   "babel": {
     "presets": [
-      ["env", {
-        "targets": {
-          "electron": "1.4"
+      [
+        "env",
+        {
+          "targets": {
+            "electron": "1.4"
+          }
         }
-      }]
+      ]
     ]
   },
   "devDependencies": {
@@ -34,7 +37,7 @@
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
-    "shelljs": "^0.7.6"
+    "execa": "^0.8.0"
   },
   "repository": {
     "type": "git",
