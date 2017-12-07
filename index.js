@@ -1,7 +1,6 @@
 const execa = require('execa')
 
-const command = 'ioreg'
-const options = ' -l | grep Capacity | cut -d\' \' -f19'
+const command = 'ioreg -rc AppleSmartBattery | grep .*Capacity.* | cut -d\' \' -f9'
 
 const commandExists = async command => {
   const { code } = await execa.shell(`which ${command}`)
@@ -13,7 +12,7 @@ const get = async () => {
     throw new Error(`${command} command does not exist`)
   }
 
-  const {code, stdout, stderr} = await execa.shell(command + options)
+  const {code, stdout, stderr} = await execa.shell(command)
 
   if (code) {
     throw new Error(stderr)

@@ -4,8 +4,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 const execa = require('execa');
 
-const command = 'ioreg';
-const options = ' -l | grep Capacity | cut -d\' \' -f19';
+const command = 'ioreg -rc AppleSmartBattery | grep .*Capacity.* | cut -d\' \' -f9';
 
 const commandExists = (() => {
   var _ref = _asyncToGenerator(function* (command) {
@@ -24,7 +23,7 @@ const get = (() => {
       throw new Error(`${command} command does not exist`);
     }
 
-    const { code, stdout, stderr } = yield execa.shell(command + options);
+    const { code, stdout, stderr } = yield execa.shell(command);
 
     if (code) {
       throw new Error(stderr);
