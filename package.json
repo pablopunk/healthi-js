@@ -1,7 +1,7 @@
 {
   "name": "healthi",
   "version": "3.4.0",
-  "description": "Simple module to get your Macbook's battery health",
+  "description": "Simple module to get your PC's battery health",
   "main": "build.js",
   "scripts": {
     "build": "babel index.js --out-file build.js",
@@ -12,6 +12,7 @@
   "keywords": [
     "health",
     "mac",
+    "pc",
     "macbook",
     "battery"
   ],

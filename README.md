@@ -4,10 +4,12 @@
   <a href="https://www.npmjs.com/package/healthi"><img src="https://img.shields.io/npm/dt/healthi.svg" alt="Downloads" /></a>
   <a href="https://github.com/feross/standard"><img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" alt="Code Style" /></a>
   <a href="https://travis-ci.org/pablopunk/healthi-js"><img src="https://travis-ci.org/pablopunk/healthi-js.svg?branch=master" alt="Build Status" /></a>
-  <p align="center">Simple module to get your Macbook's battery health</p>
+  <p align="center">Simple module to get your PC's battery health</p>
 </p>
 
 ## Install
+
+Right now it supports mac and linux:
 
 ```sh
 npm install healthi
