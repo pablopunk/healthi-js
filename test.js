@@ -1,3 +1,4 @@
+import os from 'os'
 import { existsSync } from 'fs'
 import test from 'ava'
 import { shellSync } from 'execa'
@@ -20,13 +21,25 @@ test('parses values on linux', async t => {
 })
 
 test('can run on platform', async t => {
-  if (existsSync('/sys/class/power_supply/BAT0/energy_full_design')) {
-    t.true(canRun.linux())
-  } else {
-    const { code } = await shellSync('which ioreg')
-    if (code === 0) {
-      t.true(canRun.darwin())
-    } else {
+  switch (os.platform()) {
+    case 'darwin': {
+      const { code } = await shellSync('which ioreg')
+      if (code === 0) {
+        t.true(canRun.darwin())
+      } else {
+        t.pass()
+      }
+      break
+    }
+    case 'linux': {
+      if (existsSync('/sys/class/power_supply/BAT0/energy_full_design')) {
+        t.true(canRun.linux())
+      } else {
+        t.pass()
+      }
+      break
+    }
+    default: {
       t.pass()
     }
   }
