@@ -1,6 +1,6 @@
 {
   "name": "healthi",
-  "version": "4.0.1",
+  "version": "4.1.0",
   "description": "Simple module to get your PC's battery health",
   "main": "index.js",
   "scripts": {
