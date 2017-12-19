@@ -1,5 +1,4 @@
 import test from 'ava'
-import execa from 'execa'
 import health from '.'
 
 test('check battery health range', async t => {
@@ -15,11 +14,4 @@ test('check battery health range', async t => {
       t.fail()
     }
   })
-})
-
-const command = 'ioreg'
-
-test('check command to exist', async t => {
-  await execa.shell(`which ${command}`)
-    .then(({ code }) => t.is(code, 0))
 })
