@@ -1,17 +1,18 @@
 import test from 'ava'
-import health from '.'
+import { parse } from './lib/battery'
 
-test('check battery health range', async t => {
-  await health()
-  .then(battery => {
-    t.true(battery.health >= 0 && battery.health <= 100)
-  })
-  .catch(err => {
-    if (err.message === 'error parsing ""') { // this can happen in TravisCI
-      t.pass()
-    } else {
-      console.log(err)
-      t.fail()
-    }
-  })
+test('parses values on mac', async t => {
+  const { now, original } = parse.darwin(`5000
+    5000
+    NaN
+    6000`)
+  t.is(now, 5000)
+  t.is(original, 6000)
+})
+
+test('parses values on linux', async t => {
+  const { now, original } = parse.linux(`5000
+    6000`)
+  t.is(now, 5000)
+  t.is(original, 6000)
 })
