@@ -9,7 +9,7 @@
 
 ## Install
 
-Right now it supports mac and linux:
+Right now it supports **mac** and **linux**:
 
 ```sh
 npm install healthi
