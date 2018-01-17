@@ -1,4 +1,4 @@
-# healthi.js
+# healthi
 
 <p align="center">
   <a href="https://www.npmjs.com/package/healthi"><img src="https://img.shields.io/npm/dt/healthi.svg" alt="Downloads" /></a>
@@ -42,9 +42,9 @@ The `battery` object has 3 attributes:
 
 ```js
 {
-  currentCapacity  // Example: 5953 mAh
-  originalCapacity // Example: 6559 mAh
-  health           // Example: 90.7 % (this is the current capacity compared to the original one)
+  now,      // Example: 5953 mAh
+  original, // Example: 6559 mAh
+  health    // Example: 90.7 % (this is the current capacity compared to the original one)
 }
 ```
 
