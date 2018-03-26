@@ -23,7 +23,8 @@ test('parses values on linux', async t => {
 test('can run on platform', async t => {
   switch (os.platform()) {
     case 'darwin': {
-      const { code } = await shellSync('which ioreg')
+      const { code } = shellSync('which ioreg')
+
       if (code === 0) {
         t.true(canRun.darwin())
       } else {
