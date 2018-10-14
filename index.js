@@ -8,13 +8,14 @@ async function getBattery (os) {
   }
 
   if (!canRun[os]()) {
-    return new Promise(resolve => resolve({
+    return {
       now: 100,
       original: 100
-    }))
+    }
   }
 
   const { code, stdout, stderr } = await execa.shell(commands[os])
+
   if (code) {
     throw new Error(stderr)
   }
