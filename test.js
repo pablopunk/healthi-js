@@ -2,7 +2,7 @@ import os from 'os'
 import { existsSync } from 'fs'
 import test from 'ava'
 import { shellSync } from 'execa'
-import { canRun, parse } from './lib/battery'
+import { canRun, parse } from './src/lib/battery'
 
 test('parses values on mac', async t => {
   const { now, original } = parse.darwin(`"AppleRawCurrentCapacity" = 2151
