@@ -2,11 +2,9 @@
   "name": "healthi",
   "version": "4.2.0",
   "description": "Simple module to get your PC's battery health",
-  "main": "dist/index.js",
+  "main": "index.js",
   "scripts": {
-    "test": "standard index.js && ava",
-    "build": "babel src -d dist",
-    "precommit": "npm run build && npm test"
+    "test": "standard && ava"
   },
   "keywords": [
     "health",
@@ -18,13 +16,7 @@
   "author": "Pablo Varela",
   "license": "MIT",
   "devDependencies": {
-    "@babel/cli": "^7.1.2",
-    "@babel/core": "^7.1.2",
-    "@babel/plugin-transform-runtime": "^7.1.0",
-    "@babel/preset-env": "^7.1.0",
-    "@babel/runtime": "^7.1.2",
     "ava": "^0.25.0",
-    "husky": "^1.1.2",
     "standard": "^10.0.3"
   },
   "dependencies": {
