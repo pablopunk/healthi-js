@@ -33,15 +33,15 @@ test('can run on platform', async t => {
       if (code === 0) {
         t.true(canRun.darwin())
       } else {
-        t.pass()
+        t.false(canRun.darwin())
       }
       break
     }
     case 'linux': {
-      if (existsSync('/sys/class/power_supply/BAT0/energy_full_design')) {
+      if (existsSync('/sys/class/power_supply/BAT1/voltage_now')) {
         t.true(canRun.linux())
       } else {
-        t.pass()
+        t.false(canRun.linux())
       }
       break
     }
