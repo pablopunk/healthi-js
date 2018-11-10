@@ -23,13 +23,10 @@ test('parses values on linux', async t => {
   t.is(original, 6000)
 })
 
-test('can run on platform', async t => {
+test('can run on darwin', async t => {
   switch (os.platform()) {
     case 'darwin':
       t.true(canRun.darwin())
-      break
-    case 'linux':
-      t.true(canRun.linux())
       break
     default: {
       t.pass()
