@@ -4,7 +4,7 @@
   "description": "Simple module to get your PC's battery health",
   "main": "index.js",
   "scripts": {
-    "test": "standard && ava"
+    "test": "standard && myass"
   },
   "keywords": [
     "health",
@@ -16,7 +16,7 @@
   "author": "Pablo Varela",
   "license": "MIT",
   "devDependencies": {
-    "ava": "^0.25.0",
+    "myass": "*",
     "standard": "^10.0.3"
   },
   "dependencies": {

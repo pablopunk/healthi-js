@@ -1,8 +1,6 @@
-import os from 'os'
-import { existsSync } from 'fs'
-import test from 'ava'
-import { shellSync } from 'execa'
-import { canRun, parse } from './lib/battery'
+const os = require('os')
+const test = require('myass')
+const { canRun, parse } = require('./lib/battery')
 
 test('parses values on mac', async t => {
   const { now, original } = parse.darwin(`"AppleRawCurrentCapacity" = 2151
@@ -27,24 +25,12 @@ test('parses values on linux', async t => {
 
 test('can run on platform', async t => {
   switch (os.platform()) {
-    case 'darwin': {
-      const { code } = shellSync('which ioreg')
-
-      if (code === 0) {
-        t.true(canRun.darwin())
-      } else {
-        t.false(canRun.darwin())
-      }
+    case 'darwin':
+      t.true(canRun.darwin())
       break
-    }
-    case 'linux': {
-      if (existsSync('/sys/class/power_supply/BAT1/voltage_now')) {
-        t.true(canRun.linux())
-      } else {
-        t.false(canRun.linux())
-      }
+    case 'linux':
+      t.true(canRun.linux())
       break
-    }
     default: {
       t.pass()
     }
