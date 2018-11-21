@@ -16,6 +16,15 @@ rrent"=2151,"Voltage"=11397,"Cycle Count"=620}
   t.is(original, 6559)
 })
 
+test('parses values on mac with spaces', async t => {
+  const { now, original } = parse.darwin(`"AppleRawCurrentCapacity" = 2151
+      "LegacyBatteryInfo" = {"Amperage"=18446744073709550878,"Flags"=4,"Capacity" = 5601,"Current"=2151,"Voltage"=11397,"Cycle Count"=620}
+      "DesignCapacity" = 6559
+"QmaxCell2"=1048,"QmaxCell0"=54551,"CycleCount"=620,"DesignCapacity" = 6559}`)
+  t.is(now, 5601)
+  t.is(original, 6559)
+})
+
 test('parses values on linux', async t => {
   const { now, original } = parse.linux(`5000
     6000`)
