@@ -1,9 +1,9 @@
 const os = require('os')
 const execa = require('execa')
-const { canRun, parse, commands } = require('./lib/battery')
+const { canRun, parse, command } = require('./lib/battery')
 
 function getBattery (os) {
-  if (!(os in commands)) {
+  if (!(os in command)) {
     throw new Error(`OS not supported (${os})`)
   }
 
@@ -11,7 +11,7 @@ function getBattery (os) {
     return new Promise((resolve, reject) => resolve({}))
   }
 
-  return execa.shell(commands[os])
+  return execa.shell(command[os])
     .then(({ code, stdout, stderr }) => {
       if (code) {
         throw new Error(stderr)
