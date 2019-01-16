@@ -8,7 +8,7 @@ function getBattery (os) {
   }
 
   if (!canRun[os]()) {
-    return new Promise((resolve, reject) => resolve({now: 100, original: 100}))
+    return new Promise((resolve, reject) => resolve({}))
   }
 
   return execa.shell(commands[os])
