@@ -54,8 +54,6 @@ test('parses values on linux', async t => {
   t.is(original, 94.24)
 })
 
-test('can run on darwin', async t => {
-  if (os.platform() === 'darwin') {
-    t.true(canRun.darwin())
-  }
+test('can run on platform', async t => {
+  t.true(canRun[os.platform()]())
 })

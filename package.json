@@ -20,7 +20,7 @@
     "standard": "^10.0.3"
   },
   "dependencies": {
-    "execa": "^1.0.0"
+    "execa": "*"
   },
   "repository": {
     "type": "git",
