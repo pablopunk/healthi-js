@@ -26,10 +26,32 @@ test('parses values on mac with spaces', async t => {
 })
 
 test('parses values on linux', async t => {
-  const { now, original } = parse.linux(`5000
-    6000`)
-  t.is(now, 5000)
-  t.is(original, 6000)
+  const { now, original } = parse.linux(`
+  native-path:          BAT1
+  vendor:               GIGABYTE
+  model:                Aero 14 V7
+  power supply:         yes
+  updated:              Mér 16 Xan 2019 20:13:19 CET (40 seconds ago)
+  has history:          yes
+  has statistics:       yes
+  battery
+    present:             yes
+    rechargeable:        yes
+    state:               fully-charged
+    warning-level:       none
+    energy:              94,24 Wh
+    energy-empty:        0 Wh
+    energy-full:         94,01 Wh
+    energy-full-design:  94,24 Wh
+    energy-rate:         0 W
+    voltage:             16,686 V
+    percentage:          100%
+    capacity:            100%
+    technology:          lithium-ion
+    icon-name:          'battery-full-charged-symbolic'
+  `)
+  t.is(now, 94.01)
+  t.is(original, 94.24)
 })
 
 test('can run on darwin', async t => {
